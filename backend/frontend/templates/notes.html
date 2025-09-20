@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'app.js' %}"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .notes-container {
+            max-width: 700px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        form label {
+            font-weight: bold;
+            display: block;
+            margin: 8px 0 4px;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        form button {
+            background: #3498db;
+            border: none;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        form button:hover {
+            background: #2980b9;
+        }
+        ul#notesList {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        ul#notesList li {
+            background: #ecf0f1;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        ul#notesList li b {
+            color: #2c3e50;
+        }
+        .deleteNote {
+            background: #e74c3c;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .deleteNote:hover {
+            background: #c0392b;
+        }
+        .note-meta {
+            font-size: 12px;
+            color: #555;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Notes</h1>
+    <div class="notes-container">
+        <!-- Notes Form -->
+        <form id="noteForm" enctype="multipart/form-data">
+            <label>Title</label>
+            <input type="text" id="note_title" placeholder="Enter title" required>
+
+            <label>Description</label>
+            <textarea id="note_content" placeholder="Enter description"></textarea>
+
+            <label>Attachment</label>
+            <input type="file" id="note_attachment">
+
+            <button type="submit">Add Note</button>
+        </form>
+
+        <h3 style="margin-top:20px;">Your Notes</h3>
+        <ul id="notesList"></ul>
+    </div>
+</body>
+</html>
