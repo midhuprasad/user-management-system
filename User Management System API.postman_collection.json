@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "c79ba02c-97bf-4665-97f5-bf91d2d26de5",
+		"name": "User Management System API",
+		"description": "Postman collection for Django REST Framework User Management System with JWT authentication, profile, and notes CRUD.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28328022",
+		"_collection_link": "https://planetary-comet-603334.postman.co/workspace/first-workspace~7688bbde-7f3a-4197-a9ce-7b7098ce898a/collection/28328022-c79ba02c-97bf-4665-97f5-bf91d2d26de5?action=share&source=collection_link&creator=28328022"
+	},
+	"item": [
+		{
+			"name": "Auth - Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"test@example.com\",\n  \"password\": \"Test@12345\",\n  \"password2\": \"Test@12345\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/register/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"Test@12345\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/login/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Token Refresh",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1ODQzMzIwMywiaWF0IjoxNzU4MzQ2ODAzLCJqdGkiOiIxMGU1Y2E3ZTRmYTg0ZDk1YjIwMWFhYmZiOWNiZWE3NyIsInVzZXJfaWQiOiI0In0.KbdyZXdPveDyIoQCvszzSRML083nJ5ouS-Pvw3QUQ9s\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/token/refresh/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Change Password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"old_password\": \"Test@12345\",\n  \"new_password\": \"NewPass@12345\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/change-password/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"change-password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile - View",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/profile/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"profile",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Profile - View",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/profile/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 20 Sep 2025 06:08:53 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "105"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"full_name\": \"\",\n    \"date_of_birth\": null,\n    \"email\": \"dev@gmail.com\",\n    \"address\": \"\",\n    \"gender\": \"\",\n    \"mobile_number\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Profile - Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"full_name\": \"Test User\",\n  \"date_of_birth\": \"1990-01-01\",\n  \"address\": \"123 Street, City\",\n  \"gender\": \"M\",\n  \"mobile_number\": \"9876543210\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/profile/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"profile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - List All",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/notes/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "First Note",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "This is my first note.",
+							"type": "text"
+						},
+						{
+							"key": "attachment",
+							"value": "",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/notes/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Updated Note",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Updated description.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/notes/1/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notes",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/notes/1/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notes",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/api"
+		},
+		{
+			"key": "auth_token",
+			"value": ""
+		}
+	]
+}
